@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-2">
                 <h2 id="todo-title">Todo</h2>
-                <div id="todo-container" class="hide">
+                <div id="todo-container">  <!--add back class = "hide" -->
                     <ul id="todo">
                     </ul>
                     <p id="plus">+</p>
@@ -30,15 +30,25 @@
     <script type="text/javascript">
     
 
-    var time = moment().format('LTS');
+        var time = moment().format('LTS');
+        var toDoHTML = "";
 
-    var setTime = function(){
-        time = moment().format('LTS');
-        $("#time").text(time);
-        // console.log(time);
-    }
+        var setTime = function(){
+            time = moment().format('LTS');
+            $("#time").text(time);
+        }
+        setInterval(setTime, 1000); 
 
-    setInterval(setTime, 1000); //built in function, takes 2 arguments
+        // var toDoList = [];
+        var addToList = function(){
+            var input = prompt("Add a task:");
+            toDoHTML += "<li>" + input + "</li>";
+            // toDoList.push(input);
+            // console.log(toDoList);
+            $("#todo").html(toDoHTML);
+        }
+        
+        $("#plus").on("click", addToList);
 
     </script>
 </body>
