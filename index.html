@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-2">
                 <h2 id="todo-title">Todo</h2>
-                <div id="todo-container">  <!--add back class = "hide" -->
+                <div id="todo-container" class="hide">
                     <ul id="todo">
                     </ul>
                     <p id="plus">+</p>
@@ -29,7 +29,6 @@
     <script type="text/javascript" src="https://haganka.github.io/dom/dom.js"></script>
     <script type="text/javascript">
     
-
         var time = moment().format('LTS');
         var toDoHTML = "";
 
@@ -37,8 +36,7 @@
             time = moment().format('LTS');
             $("#time").text(time);
         }
-        setInterval(setTime, 1000); 
-
+        
         // var toDoList = [];
         var addToList = function(){
             var input = prompt("Add a task:");
@@ -47,8 +45,14 @@
             // console.log(toDoList);
             $("#todo").html(toDoHTML);
         }
+
+        var openToDo = function(){
+            $("#todo-container").toggle("hide");
+        }
         
+        setInterval(setTime, 1000); 
         $("#plus").on("click", addToList);
+        $("#todo-title").on("click", openToDo);
 
     </script>
 </body>
